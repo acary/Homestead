@@ -12,9 +12,18 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-primary mx-1">Add to List</button>
-        <button class="btn btn-primary mx-1">Edit</button>
-        <button class="btn btn-secondary mx-1">Delete</button>
+        <div class="dropdown show" appDropdown #toggle="appDropdown">
+            <button
+                type="button"
+                class="btn btn-primary dropdown-toggle">
+                Manage Recipe
+            </button>
+            <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
+                <a href="#" class="dropdown-item">Add to Shopping List</a>
+                <a href="#" class="dropdown-item">Edit Recipe</a>
+                <a href="#" class="dropdown-item">Delete Recipe</a>
+            </div>
+        </div>
     </div>
 </div>
 <hr class="my-2">

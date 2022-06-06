@@ -11,12 +11,12 @@
         <li class="nav-item"><a href="#" (click)="onSelect('shopping-list')" class="nav-link">Shopping List</a></li>
       </ul>
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle">Manage</a>
-          <ul class="dropdown-menu">
-            <li class="nav-item"><a href="#" class="nav-link">Save Data</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Fetch Data</a></li>
-          </ul>
+        <li class="nav-item dropdown" appDropdown #toggle="appDropdown">
+          <a href="#" class="nav-link dropdown-toggle">Manage</a>
+          <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
+            <a href="#" class="dropdown-item">Save Data</a>
+            <a href="#" class="dropdown-item">Fetch Data</a>
+          </div>
         </li>
       </ul>
     </div>
