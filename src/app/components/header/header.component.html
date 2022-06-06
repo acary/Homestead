@@ -1,24 +1,22 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a href="#" class="navbar-brand brand">Homestead</a>
-    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a href="#" (click)="onSelect('recipe')" class="nav-link">Recipes</a></li>
-        <li class="nav-item"><a href="#" (click)="onSelect('shopping-list')" class="nav-link">Shopping List</a></li>
-      </ul>
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown" appDropdown #toggle="appDropdown">
-          <a href="#" class="nav-link dropdown-toggle">Manage</a>
-          <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
-            <a href="#" class="dropdown-item">Save Data</a>
-            <a href="#" class="dropdown-item">Fetch Data</a>
-          </div>
-        </li>
-      </ul>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand brand">Homestead</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a href="#" (click)="onSelect('recipe')" class="nav-link">Recipes</a></li>
+          <li class="nav-item"><a href="#" (click)="onSelect('shopping-list')" class="nav-link">Shopping List</a></li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown" appDropdown #toggle="appDropdown">
+            <a href="#" class="nav-link dropdown-toggle">Manage</a>
+            <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
+              <a href="#" class="dropdown-item">Save Data</a>
+              <a href="#" class="dropdown-item">Fetch Data</a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
