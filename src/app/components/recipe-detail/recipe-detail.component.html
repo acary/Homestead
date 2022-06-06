@@ -7,6 +7,7 @@
 <div class="row">
     <div class="col-xs-12">
         <h1>{{ recipe.name }}</h1>
+        <app-make-this [recipe]="this.recipe"></app-make-this>
         <p>{{ recipe.description }}</p>
     </div>
 </div>
