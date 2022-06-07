@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
@@ -13,6 +14,10 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { ShoppingEditComponent } from './components/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { MakeThisComponent } from './components/make-this/make-this.component';
+import { UsersComponent } from './components/users/users.component';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,12 +30,17 @@ import { MakeThisComponent } from './components/make-this/make-this.component';
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirective,
-    MakeThisComponent
+    MakeThisComponent,
+    UsersComponent,
+    HomeComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

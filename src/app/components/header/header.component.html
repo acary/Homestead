@@ -8,6 +8,7 @@
           <li class="nav-item"><a href="#" (click)="onSelect('shopping-list')" class="nav-link">Shopping List</a></li>
         </ul>
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
           <li class="nav-item dropdown" appDropdown #toggle="appDropdown">
             <a href="#" class="nav-link dropdown-toggle">Manage</a>
             <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
