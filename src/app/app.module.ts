@@ -18,6 +18,8 @@ import { UsersComponent } from './components/users/users.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CommonModule } from '@angular/common';
+import { UsersService } from './services/users.service';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { CommonModule } from '@angular/common';
     DropdownDirective,
     MakeThisComponent,
     UsersComponent,
-    HomeComponent
+    HomeComponent,
+    TruncatePipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,9 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
