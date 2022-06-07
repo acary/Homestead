@@ -20,6 +20,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CommonModule } from '@angular/common';
 import { UsersService } from './services/users.service';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { ActiveUsersComponent } from './components/active-users/active-users.component';
+import { InactiveUsersComponent } from './components/inactive-users/inactive-users.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     MakeThisComponent,
     UsersComponent,
     HomeComponent,
-    TruncatePipe
+    TruncatePipe,
+    ActiveUsersComponent,
+    InactiveUsersComponent
   ],
   imports: [
     CommonModule,
