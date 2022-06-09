@@ -22,6 +22,7 @@ import { UsersService } from './services/users.service';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ActiveUsersComponent } from './components/active-users/active-users.component';
 import { InactiveUsersComponent } from './components/inactive-users/inactive-users.component';
+import { CounterService } from './services/counter.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { InactiveUsersComponent } from './components/inactive-users/inactive-use
     RouterModule
   ],
   providers: [
-    UsersService
+    UsersService,
+    CounterService
   ],
   bootstrap: [AppComponent]
 })
