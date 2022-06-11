@@ -23,6 +23,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { ActiveUsersComponent } from './components/active-users/active-users.component';
 import { InactiveUsersComponent } from './components/inactive-users/inactive-users.component';
 import { CounterService } from './services/counter.service';
+import { ShoppingListService } from './services/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CounterService } from './services/counter.service';
   ],
   providers: [
     UsersService,
-    CounterService
+    CounterService,
+    ShoppingListService
   ],
   bootstrap: [AppComponent]
 })
