@@ -1,7 +1,18 @@
 <br><br><br>
 <div class="container">
-    <h1>Users</h1>
-    <div class="row">
+    <div class="my-2" *ngIf="this.user.id">
+        <h3>User</h3>
+        <a class="btn btn-sm btn-success m-1" [routerLink]="['/users', 2, 'Andy']" style="color:white">Load Andy</a>
+        <div class="col-xs-12">
+            <ul class="list-group">
+                <li class="list-group-item">ID: {{this.user.id}}</li>
+                <li class="list-group-item">Name: {{this.user.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="my-2">
+        <h3 class="my-2">Users</h3>
+        <a class="btn btn-sm btn-primary m-1" [routerLink]="['/users', 1, 'Admin']" style="color:white">Load Admin</a>
         <app-active-users></app-active-users>
         <hr class="my-2">
         <app-inactive-users></app-inactive-users>

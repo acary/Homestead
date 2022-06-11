@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'recipes', component: RecipesComponent },
   { path: 'shopping', component: ShoppingListComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'users/:id/:name', component: UsersComponent },
   { path: '**', component: AppComponent }
 ];
 
