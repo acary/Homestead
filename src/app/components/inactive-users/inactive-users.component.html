@@ -1,7 +1,9 @@
 <h6 class="py-2">Inactive</h6>
 <ul class="list-group">
     <li class="list-group-item" *ngFor="let user of users; let i = index">
-        {{ user }} | <span (click)="onSetToActive(i)">Set to Active</span>
+        <a [routerLink]="['/users', i+1, user]">{{ user }}</a> | 
+        <a [routerLink]="['/users', i+1, user, 'edit']" [queryParams]="{allowEdit: '1'}" fragment="loading">Edit</a>
+        | <span (click)="onSetToActive(i)">Set to Active</span>
     </li>
 </ul>
 <small *ngIf="users.length === 0">No inactive users found</small>

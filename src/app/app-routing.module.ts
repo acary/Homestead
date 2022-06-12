@@ -12,8 +12,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'shopping', component: ShoppingListComponent },
-  { path: 'users', component: UsersComponent },
+  { path: 'users', component: UsersComponent},
   { path: 'users/:id/:name', component: UsersComponent },
+  { path: 'users/:id/:name/edit', component: UsersComponent },
   { path: '**', component: AppComponent }
 ];
 

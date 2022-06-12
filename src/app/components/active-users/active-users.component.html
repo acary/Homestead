@@ -3,7 +3,9 @@
   <li
     class="list-group-item"
     *ngFor="let user of users; let i = index">
-    {{ user }} | <span (click)="onSetToInactive(i)">Set to Inactive</span>
+    <a [routerLink]="['/users', i+1, user]">{{ user }}</a> | 
+    <a [routerLink]="['/users', i+1, user, 'edit']" [queryParams]="{allowEdit: '1'}" fragment="loading">Edit</a>
+    | <span (click)="onSetToInactive(i)">Set to Inactive</span>
   </li>
 </ul>
 <small *ngIf="users.length === 0">No active users found</small>

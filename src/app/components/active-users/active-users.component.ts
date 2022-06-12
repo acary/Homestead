@@ -9,7 +9,9 @@ import { UsersService } from 'src/app/services/users.service';
 export class ActiveUsersComponent implements OnInit {
   users: string[];
 
-  constructor(private usersService: UsersService) { }
+  constructor(
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
     this.users = this.usersService.activeUsers;

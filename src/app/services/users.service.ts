@@ -5,8 +5,8 @@ import { CounterService } from './counter.service';
   providedIn: 'root'
 })
 export class UsersService {
-  activeUsers = ['Andy', 'David'];
-  inactiveUsers = ['Steve', 'Quintin'];
+  activeUsers = ['Admin', 'Andy', 'David'];
+  inactiveUsers = ['Allie', 'Echo'];
 
   constructor(
     private counterService: CounterService
