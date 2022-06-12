@@ -24,6 +24,8 @@ import { InactiveUsersComponent } from './components/inactive-users/inactive-use
 import { CounterService } from './services/counter.service';
 import { ShoppingListService } from './services/shopping-list.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   providers: [
     UsersService,
     CounterService,
-    ShoppingListService
+    ShoppingListService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

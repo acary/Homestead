@@ -6,13 +6,14 @@ import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'shopping', component: ShoppingListComponent },
-  { path: 'users', component: UsersComponent},
+  { path: 'users', canActivate: [AuthGuard], component: UsersComponent},
   { path: 'users/:id/:name', component: UsersComponent },
   { path: 'users/:id/:name/edit', component: UsersComponent },
   { path: 'not-found', component: NotFoundComponent },
