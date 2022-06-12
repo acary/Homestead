@@ -8,8 +8,7 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  //{ path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'shopping', component: ShoppingListComponent },

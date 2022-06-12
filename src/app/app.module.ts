@@ -15,7 +15,6 @@ import { ShoppingEditComponent } from './components/shopping-edit/shopping-edit.
 import { DropdownDirective } from './shared/dropdown.directive';
 import { MakeThisComponent } from './components/make-this/make-this.component';
 import { UsersComponent } from './components/users/users.component';
-import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CommonModule } from '@angular/common';
 import { UsersService } from './services/users.service';
@@ -50,8 +49,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    RouterModule
+    HttpClientModule
   ],
   providers: [
     UsersService,
