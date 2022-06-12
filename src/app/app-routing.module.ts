@@ -5,6 +5,7 @@ import { UsersComponent } from './components/users/users.component';
 import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   //{ path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent},
   { path: 'users/:id/:name', component: UsersComponent },
   { path: 'users/:id/:name/edit', component: UsersComponent },
-  { path: '**', component: AppComponent }
+  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({

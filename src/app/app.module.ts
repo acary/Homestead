@@ -24,6 +24,7 @@ import { ActiveUsersComponent } from './components/active-users/active-users.com
 import { InactiveUsersComponent } from './components/inactive-users/inactive-users.component';
 import { CounterService } from './services/counter.service';
 import { ShoppingListService } from './services/shopping-list.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ShoppingListService } from './services/shopping-list.service';
     HomeComponent,
     TruncatePipe,
     ActiveUsersComponent,
-    InactiveUsersComponent
+    InactiveUsersComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
