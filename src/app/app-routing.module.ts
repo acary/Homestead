@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
@@ -15,13 +16,14 @@ const routes: Routes = [
   {
     path: 'recipes', component: RecipesComponent, children: [
       { path: '', component: RecipeStartComponent },
+      { path: 'new', component: RecipeEditComponent },
       { path: ':id', component: RecipeDetailComponent },
+      { path: ':id/edit', component: RecipeEditComponent },
     ]
   },
   { path: 'shopping', component: ShoppingListComponent },
   {
     path: 'users',
-    // canActivate: [AuthGuard], 
     canActivateChild: [AuthGuard],
     component: UsersComponent,
     children: [
@@ -29,8 +31,6 @@ const routes: Routes = [
       { path: ':id/:name/edit', component: UsersComponent }
     ]
   },
-  // { path: 'users/:id/:name', component: UsersComponent },
-  // { path: 'users/:id/:name/edit', component: UsersComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

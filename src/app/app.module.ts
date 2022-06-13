@@ -27,6 +27,7 @@ import { CounterService } from './services/counter.service';
 import { ShoppingListService } from './services/shopping-list.service';
 import { UsersService } from './services/users.service';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
     ActiveUsersComponent,
     InactiveUsersComponent,
     NotFoundComponent,
-    RecipeStartComponent
+    RecipeStartComponent,
+    RecipeEditComponent
   ],
   imports: [
     CommonModule,
