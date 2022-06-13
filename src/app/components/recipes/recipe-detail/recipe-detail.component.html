@@ -1,30 +1,13 @@
 <div class="row">
-    <h5>Recipe Detail</h5>
+    <h1>{{ recipe.name }}</h1>
     <div class="col-xs-12">
         <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive" style="max-height: 250px;" />
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h1>{{ recipe.name }}</h1>
-        <app-make-this [recipe]="this.recipe"></app-make-this>
         <p>{{ recipe.description }}</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <div class="dropdown show" appDropdown #toggle="appDropdown">
-            <button
-                type="button"
-                class="btn btn-primary dropdown-toggle">
-                Manage Recipe
-            </button>
-            <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
-                <a (click)="onAddToShoppingList(recipe.ingredients)" style="cursor: pointer;" class="dropdown-item">Add to Shopping List</a>
-                <a href="#" class="dropdown-item">Edit Recipe</a>
-                <a href="#" class="dropdown-item">Delete Recipe</a>
-            </div>
-        </div>
+        <app-make-this [recipe]="this.recipe"></app-make-this>
     </div>
 </div>
 <hr class="my-2">
@@ -38,5 +21,19 @@
         </ul>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-xs-12">
+        <div class="dropdown show" appDropdown #toggle="appDropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle my-2">
+                Manage Recipe
+            </button>
+            <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
+                <a (click)="onAddToShoppingList(recipe.ingredients)" style="cursor: pointer;" class="dropdown-item">Add
+                    to Shopping List</a>
+                <a href="#" class="dropdown-item">Edit Recipe</a>
+                <a href="#" class="dropdown-item">Delete Recipe</a>
+            </div>
+        </div>
+    </div>
+</div>
 <br>

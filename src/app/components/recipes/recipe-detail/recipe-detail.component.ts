@@ -3,8 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { ShoppingListService } from 'src/app/services/shopping-list.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { MakeThisComponent } from '../make-this/make-this.component';
-import { Recipe } from '../recipes/recipe.model';
+import { MakeThisComponent } from '../../make-this/make-this.component';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-detail',
