@@ -22,7 +22,6 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.makeThis.attach());
   }
 
   onAddToShoppingList(ingredients: Ingredient[]) {

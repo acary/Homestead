@@ -3,11 +3,11 @@
       <a (click)="goHome()" class="navbar-brand brand">Homestead</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item"><a routerLink="/recipes" (click)="onSelect('recipe')" class="nav-link">Recipes</a></li>
-          <li class="nav-item"><a routerLink="/shopping" (click)="onSelect('shopping-list')" class="nav-link">Shopping List</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/recipes" class="nav-link">Recipes</a></li>
+          <li routerLinkActive="active" class="nav-item"><a routerLink="/shopping" class="nav-link">Shopping List</a></li>
         </ul>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
+          <li routerLinkActive="active" class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
           <button class="btn btn-success btn-sm" (click)="onLogin()">Login</button>
           <button class="btn btn-primary btn-sm mx-1" (click)="onLogout()">Logout</button>
           <!-- <li class="nav-item dropdown" appDropdown #toggle="appDropdown">

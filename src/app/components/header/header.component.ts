@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() featureSelected = new EventEmitter<string>();
 
   constructor(
     private router: Router,
@@ -20,11 +19,6 @@ export class HeaderComponent implements OnInit {
 
   goHome() {
     this.router.navigate(['/']);
-  }
-
-  onSelect(feature: string) {
-    console.log(feature);
-    this.featureSelected.emit(feature);
   }
 
   onLogin() {

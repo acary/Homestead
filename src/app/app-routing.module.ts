@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { UsersComponent } from './components/users/users.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UsersComponent } from './components/users/users.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
@@ -13,14 +12,15 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'shopping', component: ShoppingListComponent },
-  { path: 'users', 
-      // canActivate: [AuthGuard], 
-      canActivateChild: [AuthGuard], 
-      component: UsersComponent,
-      children: [
-        { path: ':id/:name', component: UsersComponent },
-        { path: ':id/:name/edit', component: UsersComponent }
-      ]
+  {
+    path: 'users',
+    // canActivate: [AuthGuard], 
+    canActivateChild: [AuthGuard],
+    component: UsersComponent,
+    children: [
+      { path: ':id/:name', component: UsersComponent },
+      { path: ':id/:name/edit', component: UsersComponent }
+    ]
   },
   // { path: 'users/:id/:name', component: UsersComponent },
   // { path: 'users/:id/:name/edit', component: UsersComponent },
@@ -29,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

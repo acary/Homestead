@@ -14,10 +14,6 @@ export class MakeThisComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  attach() {
-    return 'Make this attached.';
-  }
-
   add(recipe: Recipe) {
     console.log('Make this: ' + recipe.name);
   }
