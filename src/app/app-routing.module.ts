@@ -13,9 +13,17 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'shopping', component: ShoppingListComponent },
-  { path: 'users', canActivate: [AuthGuard], component: UsersComponent},
-  { path: 'users/:id/:name', component: UsersComponent },
-  { path: 'users/:id/:name/edit', component: UsersComponent },
+  { path: 'users', 
+      // canActivate: [AuthGuard], 
+      canActivateChild: [AuthGuard], 
+      component: UsersComponent,
+      children: [
+        { path: ':id/:name', component: UsersComponent },
+        { path: ':id/:name/edit', component: UsersComponent }
+      ]
+  },
+  // { path: 'users/:id/:name', component: UsersComponent },
+  // { path: 'users/:id/:name/edit', component: UsersComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

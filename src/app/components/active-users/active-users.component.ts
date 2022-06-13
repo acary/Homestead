@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './active-users.component.html',
   styleUrls: ['./active-users.component.css']
 })
+
 export class ActiveUsersComponent implements OnInit {
   users: string[];
 
@@ -20,6 +21,5 @@ export class ActiveUsersComponent implements OnInit {
   onSetToInactive(id: number) {
     this.usersService.setToInactive(id);
   }
-
 
 }
