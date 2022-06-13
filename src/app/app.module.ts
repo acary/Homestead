@@ -26,6 +26,7 @@ import { ShoppingListService } from './services/shopping-list.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { RecipeStartComponent } from './components/recipe-start/recipe-start.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AuthService } from './services/auth.service';
     TruncatePipe,
     ActiveUsersComponent,
     InactiveUsersComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RecipeStartComponent
   ],
   imports: [
     CommonModule,
