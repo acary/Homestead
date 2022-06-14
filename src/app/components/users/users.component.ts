@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   user: {id: number, name: string}
   paramsSubscription: Subscription;
   userActivated = false;
+  private activatedSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,13 +32,14 @@ export class UsersComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.usersService.activatedEmitter.subscribe(didActivate => {
+    this.activatedSubscription = this.usersService.activatedEmitter.subscribe(didActivate => {
       this.userActivated = didActivate;
     });
   }
 
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
+    this.activatedSubscription.unsubscribe();
   }
 
 }

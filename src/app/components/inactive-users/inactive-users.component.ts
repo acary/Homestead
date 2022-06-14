@@ -21,7 +21,7 @@ export class InactiveUsersComponent implements OnInit {
   }
 
   onActivate() {
-    this.usersService.activatedEmitter.emit(true);
+    this.usersService.activatedEmitter.next(true);
   }
 
 }
