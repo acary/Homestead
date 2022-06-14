@@ -7,8 +7,8 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { AuthGuard } from './components/users/auth-guard.service';
 import { UsersComponent } from './components/users/users.component';
-import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },

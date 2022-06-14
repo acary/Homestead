@@ -1,6 +1,6 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { CounterService } from './counter.service';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { CounterService } from '../../services/counter.service';
 
 @Injectable({
   providedIn: 'root'

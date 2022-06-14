@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { RecipeService } from 'src/app/services/recipe.service';
-import { ShoppingListService } from 'src/app/services/shopping-list.service';
+import { RecipeService } from 'src/app/components/recipes/recipe.service';
+import { ShoppingListService } from 'src/app/components/shopping-list/shopping-list.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { MakeThisComponent } from '../../make-this/make-this.component';
 import { Recipe } from '../recipe.model';

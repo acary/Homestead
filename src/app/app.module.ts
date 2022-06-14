@@ -13,21 +13,21 @@ import { InactiveUsersComponent } from './components/inactive-users/inactive-use
 import { MakeThisComponent } from './components/make-this/make-this.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 import { RecipeItemComponent } from './components/recipes/recipe-item/recipe-item.component';
 import { RecipeListComponent } from './components/recipes/recipe-list/recipe-list.component';
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingEditComponent } from './components/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { ShoppingListService } from './components/shopping-list/shopping-list.service';
+import { AuthGuard } from './components/users/auth-guard.service';
+import { AuthService } from './components/users/auth.service';
 import { UsersComponent } from './components/users/users.component';
+import { UsersService } from './components/users/users.service';
 import { TruncatePipe } from './pipes/truncate.pipe';
-import { AuthGuard } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service';
 import { CounterService } from './services/counter.service';
-import { ShoppingListService } from './services/shopping-list.service';
-import { UsersService } from './services/users.service';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
