@@ -8,6 +8,7 @@ import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-s
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { AuthGuard } from './components/users/auth-guard.service';
+import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: ':id/:name/edit', component: UsersComponent }
     ]
   },
+  { path: 'subscription-list', component: SubscriptionListComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
