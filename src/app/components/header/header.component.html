@@ -7,17 +7,10 @@
           <li routerLinkActive="active" class="nav-item"><a routerLink="/shopping" class="nav-link">Shopping List</a></li>
         </ul>
         <ul class="navbar-nav mr-auto">
-          <li routerLinkActive="active" class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
-          <button class="btn btn-success btn-sm" (click)="onLogin()" *ngIf="!this.authenticated">Login</button>
-          <button class="btn btn-primary btn-sm mx-1" (click)="onLogout()" *ngIf="this.authenticated">Logout</button>
-          <!-- <li class="nav-item dropdown" appDropdown #toggle="appDropdown">
-            <a class="nav-link dropdown-toggle disabled">Manage</a>
-            <div class="dropdown-menu" [ngClass]="{'show':toggle.isOpen}">
-              <a class="dropdown-item disabled">Save Data</a>
-              <a class="dropdown-item disabled">Fetch Data</a>
-            </div>
-          </li> -->
+          <li *ngIf="this.authenticated" routerLinkActive="active" class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
         </ul>
+        <button class="btn btn-success btn-sm" (click)="onLogin()" *ngIf="!this.authenticated">Login</button>
+        <button class="btn btn-primary btn-sm mx-1" (click)="onLogout()" *ngIf="this.authenticated">Logout</button>
       </div>
   </nav>
 </header>
