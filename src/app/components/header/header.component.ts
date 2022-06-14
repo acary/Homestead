@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  authenticated = false;
 
   constructor(
     private router: Router,
@@ -24,11 +25,13 @@ export class HeaderComponent implements OnInit {
   onLogin() {
     console.log('login');
     this.authService.login();
+    this.authenticated = true;
   }
 
   onLogout() {
     console.log('logout');
     this.authService.logout();
+    this.authenticated = false;
   }
 
 }
