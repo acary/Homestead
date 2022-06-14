@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { CounterService } from './counter.service';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { CounterService } from './counter.service';
 export class UsersService {
   activeUsers = ['Admin', 'Andy', 'David'];
   inactiveUsers = ['Allie', 'Echo'];
+  activatedEmitter = new EventEmitter<boolean>();
 
   constructor(
     private counterService: CounterService

@@ -17,6 +17,11 @@ export class InactiveUsersComponent implements OnInit {
 
   onSetToActive(id: number) {
     this.usersService.setToActive(id);
+    this.onActivate();
+  }
+
+  onActivate() {
+    this.usersService.activatedEmitter.emit(true);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-users',
@@ -10,9 +11,11 @@ import { Subscription } from 'rxjs';
 export class UsersComponent implements OnInit, OnDestroy {
   user: {id: number, name: string}
   paramsSubscription: Subscription;
+  userActivated = false;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +30,10 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.user.name = params['name'];
       }
     );
+
+    this.usersService.activatedEmitter.subscribe(didActivate => {
+      this.userActivated = didActivate;
+    });
   }
 
   ngOnDestroy(): void {
