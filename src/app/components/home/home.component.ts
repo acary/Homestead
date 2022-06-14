@@ -45,8 +45,4 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.firstObsSubscription.unsubscribe();
   }
 
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
-  }
-
 }
