@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ideas',
@@ -23,7 +24,7 @@ export class IdeasComponent implements OnInit {
     this.ideaForm = new FormGroup({
       'ideaData': new FormGroup({
         'ideaName': new FormControl(null, [Validators.required, this.forbiddenIdeas.bind(this)]),
-        'notes': new FormControl('', [Validators.required]),
+        'notes': new FormControl('', [Validators.required], this.forbiddenNotes.bind(this)),
         'priority': new FormControl('low'),
         'tags': new FormArray([])
       })
@@ -57,5 +58,18 @@ export class IdeasComponent implements OnInit {
     }
     return null;
   }
+
+  forbiddenNotes(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+        setTimeout(() => {
+            if (control.value === 'test') {
+                resolve({'notesIsForbidden': true});
+            } else {
+                resolve(null);
+            }
+        }, 1500);
+    });
+    return promise;
+}
 
 }
