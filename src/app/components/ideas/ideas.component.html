@@ -8,14 +8,12 @@
                     <label for="ideaName">Idea Name</label>
                     <input type="text" class="form-control" id="ideaName" formControlName="ideaName">
                     <span
-                        *ngIf="ideaForm.get('ideaData.ideaName')
-                        && ideaForm.get('ideaData.ideaName').hasError('ideaIsForbidden')
+                        *ngIf="ideaForm.get('ideaData.ideaName').hasError('ideaIsForbidden')
                         && ideaForm.get('ideaData.ideaName').touched">
                         <small class="text-danger">This idea is forbidden. </small>
                     </span>
                     <span
-                        *ngIf="ideaForm.get('ideaData.ideaName')
-                        && ideaForm.get('ideaData.ideaName').hasError('required')
+                        *ngIf="ideaForm.get('ideaData.ideaName').hasError('required')
                         && ideaForm.get('ideaData.ideaName').touched">
                         <small class="text-danger">Idea name is required. </small>
                     </span>
@@ -27,8 +25,7 @@
                     <label for="notes">Notes</label>
                     <input type="text" class="form-control" id="notes" formControlName="notes">
                     <span
-                        *ngIf="ideaForm.get('ideaData.notes') 
-                        && ideaForm.get('ideaData.notes').hasError('notesIsForbidden')
+                        *ngIf="ideaForm.get('ideaData.notes').hasError('notesIsForbidden')
                         && ideaForm.get('ideaData.notes').touched">
                         <small class="text-danger">This note is forbidden. </small>
                     </span>
