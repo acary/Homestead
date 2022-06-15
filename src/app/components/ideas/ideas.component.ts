@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ideas',
@@ -12,7 +12,8 @@ export class IdeasComponent implements OnInit {
   submittedIdea: any = {
     'ideaName': '',
     'notes': '',
-    'priority': ''
+    'priority': '',
+    'tags': []
   };
 
   constructor() { }
@@ -22,7 +23,8 @@ export class IdeasComponent implements OnInit {
       'ideaData': new FormGroup({
         'ideaName': new FormControl('', Validators.required),
         'notes': new FormControl('', [Validators.required]),
-        'priority': new FormControl('low')
+        'priority': new FormControl('low'),
+        'tags': new FormArray([])
       })
     });
   }
@@ -33,8 +35,18 @@ export class IdeasComponent implements OnInit {
     this.submittedIdea = {
       'ideaName': this.ideaForm.get('ideaData.ideaName').value,
       'notes': this.ideaForm.get('ideaData.notes').value,
-      'priority': this.ideaForm.get('ideaData.priority').value
+      'priority': this.ideaForm.get('ideaData.priority').value,
+      'tags': this.ideaForm.get('ideaData.tags').value
     };
+  }
+
+  getControls() {
+    return (this.ideaForm.get('ideaData.tags') as FormArray).controls;
+  }
+
+  onAddTag() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.ideaForm.get('ideaData.tags')).push(control);
   }
 
 }

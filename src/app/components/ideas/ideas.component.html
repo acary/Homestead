@@ -6,35 +6,33 @@
             <div formGroupName="ideaData">
                 <div class="form-group my-1">
                     <label for="ideaName">Idea Name</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="ideaName"
-                        formControlName="ideaName">
-                    <span *ngIf="!ideaForm.get('ideaData.ideaName').valid && ideaForm.get('ideaData.ideaName').touched" class="help-block">Please enter an idea name</span>
+                    <input type="text" class="form-control" id="ideaName" formControlName="ideaName">
+                    <span *ngIf="!ideaForm.get('ideaData.ideaName').valid && ideaForm.get('ideaData.ideaName').touched"
+                        class="help-block">Please enter an idea name</span>
                 </div>
                 <div class="form-group my-1">
                     <label for="notes">Notes</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="notes"
-                        formControlName="notes">
-                    <span *ngIf="!ideaForm.get('ideaData.notes').valid && ideaForm.get('ideaData.notes').touched" class="help-block">Please enter notes</span>
+                    <input type="text" class="form-control" id="notes" formControlName="notes">
+                    <span *ngIf="!ideaForm.get('ideaData.notes').valid && ideaForm.get('ideaData.notes').touched"
+                        class="help-block">Please enter notes</span>
                 </div>
                 <div class="form-group my-1">
                     <label for="priority">
                         Priority</label>
-                    <select
-                        class="form-control"
-                        id="priority"
-                        formControlName="priority">
+                    <select class="form-control" id="priority" formControlName="priority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                     </select>
                 </div>
-                <button class="btn btn-primary my-2" type="submit">Submit</button>
+                <div class="my-2" formArrayName="tags">
+                    <h6>Tags</h6>
+                    <button class="btn btn-outline-primary btn-sm" type="button" (click)="onAddTag()">Add Tag</button>
+                    <div class="form-group" *ngFor="let tagControl of getControls(); let i = index">
+                        <input type="text" class="form-control my-1" [formControlName]="i">
+                    </div>
+                </div>
+                <button class="btn btn-success my-2" type="submit">Submit Idea</button>
             </div>
         </form>
     </div>
@@ -49,6 +47,7 @@
                     <th>Idea</th>
                     <th>Notes</th>
                     <th>Priority</th>
+                    <th>Tags</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,6 +55,7 @@
                     <td>{{submittedIdea.ideaName}}</td>
                     <td>{{submittedIdea.notes}}</td>
                     <td>{{submittedIdea.priority}}</td>
+                    <td>{{submittedIdea.tags}}</td>
                 </tr>
             </tbody>
         </table>
