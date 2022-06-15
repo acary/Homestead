@@ -9,6 +9,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class IdeasComponent implements OnInit {
   ideaForm: FormGroup;
   isSubmitted: boolean = false;
+  forbiddenIdeaNames: any = ['skydive', 'bungee jump', 'crowdsurf'];
   submittedIdea: any = {
     'ideaName': '',
     'notes': '',
@@ -21,7 +22,7 @@ export class IdeasComponent implements OnInit {
   ngOnInit(): void {
     this.ideaForm = new FormGroup({
       'ideaData': new FormGroup({
-        'ideaName': new FormControl('', Validators.required),
+        'ideaName': new FormControl(null, [Validators.required, this.forbiddenIdeas.bind(this)]),
         'notes': new FormControl('', [Validators.required]),
         'priority': new FormControl('low'),
         'tags': new FormArray([])
@@ -38,6 +39,7 @@ export class IdeasComponent implements OnInit {
       'priority': this.ideaForm.get('ideaData.priority').value,
       'tags': this.ideaForm.get('ideaData.tags').value
     };
+    this.ideaForm.reset();
   }
 
   getControls() {
@@ -47,6 +49,13 @@ export class IdeasComponent implements OnInit {
   onAddTag() {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.ideaForm.get('ideaData.tags')).push(control);
+  }
+
+  forbiddenIdeas(control: FormControl): { [s: string]: boolean } {
+    if (this.forbiddenIdeaNames.indexOf(control.value) !== -1) {
+      return { 'ideaIsForbidden': true };
+    }
+    return null;
   }
 
 }

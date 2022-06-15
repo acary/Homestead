@@ -8,7 +8,7 @@
                     <label for="ideaName">Idea Name</label>
                     <input type="text" class="form-control" id="ideaName" formControlName="ideaName">
                     <span *ngIf="!ideaForm.get('ideaData.ideaName').valid && ideaForm.get('ideaData.ideaName').touched"
-                        class="help-block">Please enter an idea name</span>
+                        class="help-block">Please enter a valid idea name</span>
                 </div>
                 <div class="form-group my-1">
                     <label for="notes">Notes</label>
@@ -32,7 +32,7 @@
                         <input type="text" class="form-control my-1" [formControlName]="i">
                     </div>
                 </div>
-                <button class="btn btn-success my-2" type="submit">Submit Idea</button>
+                <button class="btn btn-success my-2" type="submit" [disabled]="!ideaForm.valid">Submit Idea</button>
             </div>
         </form>
     </div>
