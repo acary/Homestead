@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { IdeasComponent } from './components/ideas/ideas.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
     ]
   },
   { path: 'subscription-list', component: SubscriptionListComponent },
+  { path: 'ideas', component: IdeasComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
