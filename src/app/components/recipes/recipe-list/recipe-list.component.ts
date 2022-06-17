@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RecipeService } from 'src/app/components/recipes/recipe.service';
 import { Recipe } from '../recipe.model';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,7 +12,8 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
-  subscription: Subscription
+  subscription: Subscription;
+  filteredKeyword = '';
 
   constructor(
     private recipeService: RecipeService,

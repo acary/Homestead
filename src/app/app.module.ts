@@ -33,6 +33,7 @@ import { CounterService } from './services/counter.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { IdeasComponent } from './components/ideas/ideas.component';
 import { RecipeService } from './components/recipes/recipe.service';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RecipeService } from './components/recipes/recipe.service';
     RecipeEditComponent,
     SubscriptionListComponent,
     FooterComponent,
-    IdeasComponent
+    IdeasComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
