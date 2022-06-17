@@ -7,5 +7,5 @@
 </div>
 <hr>
 <h5>Recipes</h5>
-<app-recipe-item *ngFor="let recipeEl of recipes | filter:filteredKeyword:'name'; let i = index" [recipe]="recipeEl"
+<app-recipe-item *ngFor="let recipeEl of recipes | filter:filteredKeyword:'name' | sort:'name'; let i = index" [recipe]="recipeEl"
     [index]="i"></app-recipe-item>

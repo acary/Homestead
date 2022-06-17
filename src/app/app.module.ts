@@ -34,6 +34,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { IdeasComponent } from './components/ideas/ideas.component';
 import { RecipeService } from './components/recipes/recipe.service';
 import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     SubscriptionListComponent,
     FooterComponent,
     IdeasComponent,
-    FilterPipe
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     CommonModule,
