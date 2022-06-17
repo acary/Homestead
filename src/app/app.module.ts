@@ -32,6 +32,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { CounterService } from './services/counter.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { IdeasComponent } from './components/ideas/ideas.component';
+import { RecipeService } from './components/recipes/recipe.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { IdeasComponent } from './components/ideas/ideas.component';
   providers: [
     UsersService,
     CounterService,
+    RecipeService,
     ShoppingListService,
     AuthService,
     AuthGuard
