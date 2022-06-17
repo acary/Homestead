@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/components/users/users.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit, OnDestroy {
-  user: {id: number, name: string}
+  user: { id: number, name: string };
   paramsSubscription: Subscription;
   userActivated = false;
   private activatedSubscription: Subscription;
@@ -20,26 +20,31 @@ export class UsersComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.user = {
-      id: this.route.snapshot.params['id'],
-      name: this.route.snapshot.params['name']
-    };
+    if (this.route.snapshot.params['id'] === undefined) {
+      this.user = { id: 2, name: 'Andy' }
+    } else {
+      this.user = {
+        id: this.route.snapshot.params['id'],
+        name: this.route.snapshot.params['name']
+      };
 
-    this.paramsSubscription = this.route.params.subscribe(
-      (params: Params) => {
-        this.user.id = params['id'];
-        this.user.name = params['name'];
-      }
-    );
+      this.paramsSubscription = this.route.params.subscribe(
+        (params: Params) => {
+          this.user.id = params['id'];
+          this.user.name = params['name'];
+        }
+      );
 
-    this.activatedSubscription = this.usersService.activatedEmitter.subscribe(didActivate => {
-      this.userActivated = didActivate;
-    });
+      this.activatedSubscription = this.usersService.activatedEmitter.subscribe(didActivate => {
+        this.userActivated = didActivate;
+      });
+    }
+
   }
 
   ngOnDestroy(): void {
-    this.paramsSubscription.unsubscribe();
-    this.activatedSubscription.unsubscribe();
+    // this.paramsSubscription.unsubscribe();
+    // this.activatedSubscription.unsubscribe();
   }
 
 }
