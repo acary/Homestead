@@ -22,14 +22,14 @@
                     <div class="form-group">
                         <label for="imagePath">Image URL</label>
                         <input type="text" id="imagePath" formControlName="imagePath" class="form-control"
-                            placeholder="https://path.to/recipe-image.jpeg">
+                            placeholder="https://path.to/recipe-image.jpeg" #imagePath>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <img src="" class="img-responsive">
+                        <img [src]="imagePath.value" class="img-responsive my-2" style="max-height: 200px;">
                     </div>
                 </div>
             </div>
