@@ -11,6 +11,7 @@ import { Idea } from './idea.model';
   styleUrls: ['./ideas.component.css']
 })
 export class IdeasComponent implements OnInit {
+  loadedIdeas: Idea[] = [];
   ideaForm: FormGroup;
   isSubmitted: boolean = false;
   forbiddenIdeaNames: any = ['skydive', 'bungee jump', 'crowdsurf'];
@@ -101,8 +102,8 @@ export class IdeasComponent implements OnInit {
         })
       )
       .subscribe(
-        (response) => {
-          console.log(response);
+        (ideas) => {
+          this.loadedIdeas = ideas;
         }
       );
   }
