@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 
+import { Idea } from './idea.model';
+
 @Component({
   selector: 'app-ideas',
   templateUrl: './ideas.component.html',
@@ -45,7 +47,7 @@ export class IdeasComponent implements OnInit {
       'tags': this.ideaForm.get('ideaData.tags').value
     };
 
-    this.http.post('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json', this.submittedIdea)
+    this.http.post<{ name: string }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json', this.submittedIdea)
       .subscribe(
         (response) => {
           console.log(response);
@@ -86,10 +88,10 @@ export class IdeasComponent implements OnInit {
 
   private fetchIdeas() {
     this.http
-      .get('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json')
+      .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json')
       .pipe(
-        map((response: Response) => {
-          const ideasArray = [];
+        map(response => {
+          const ideasArray: Idea[] = [];
           for (const key in response) {
             if (response.hasOwnProperty(key)) {
               ideasArray.push({ ...response[key], id: key });

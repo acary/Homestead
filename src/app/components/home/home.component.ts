@@ -18,10 +18,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       let count = 0;
       setInterval(() => {
         observer.next(count);
-        if (count === 2) {
+        if (count === 3) {
           observer.complete();
         }
-        if (count > 3) {
+        if (count > 4) {
           observer.error(new Error('Count is greater than 2!'));
         }
         count++;
@@ -29,15 +29,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.firstObsSubscription = customIntervalObservable.pipe(filter((data: number) => {
-      return data % 2 === 0;
+      return data > 0;
     }), map((data: number) => {
-      return 'Round: ' + (data + 1);
+      return 'Round: ' + (data);
     })).subscribe(data => {
       console.log(data);
     }, error => {
       console.log('Error: ', error);
     }, () => {
-      console.log('Completed!');
+      console.log('Completed loading!');
     });
   }
 
