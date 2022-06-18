@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ideas',
@@ -18,7 +19,7 @@ export class IdeasComponent implements OnInit {
     'tags': []
   };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.ideaForm = new FormGroup({
@@ -29,17 +30,28 @@ export class IdeasComponent implements OnInit {
         'tags': new FormArray([])
       })
     });
+
+    this.fetchIdeas();
   }
 
   onSubmit() {
     this.isSubmitted = true;
     console.log(this.ideaForm.value);
+
     this.submittedIdea = {
       'ideaName': this.ideaForm.get('ideaData.ideaName').value,
       'notes': this.ideaForm.get('ideaData.notes').value,
       'priority': this.ideaForm.get('ideaData.priority').value,
       'tags': this.ideaForm.get('ideaData.tags').value
     };
+
+    this.http.post('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json', this.submittedIdea)
+      .subscribe(
+        (response) => {
+          console.log(response);
+        }
+      );
+
     this.ideaForm.reset();
   }
 
@@ -61,15 +73,36 @@ export class IdeasComponent implements OnInit {
 
   forbiddenNotes(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
-        setTimeout(() => {
-            if (control.value === 'test') {
-                resolve({'notesIsForbidden': true});
-            } else {
-                resolve(null);
-            }
-        }, 1500);
+      setTimeout(() => {
+        if (control.value === 'test') {
+          resolve({ 'notesIsForbidden': true });
+        } else {
+          resolve(null);
+        }
+      }, 1500);
     });
     return promise;
-}
+  }
+
+  private fetchIdeas() {
+    this.http
+      .get('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json')
+      .pipe(
+        map((response: Response) => {
+          const ideasArray = [];
+          for (const key in response) {
+            if (response.hasOwnProperty(key)) {
+              ideasArray.push({ ...response[key], id: key });
+            }
+          }
+          return ideasArray;
+        })
+      )
+      .subscribe(
+        (response) => {
+          console.log(response);
+        }
+      );
+  }
 
 }
