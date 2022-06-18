@@ -12,6 +12,7 @@ import { Idea } from './idea.model';
 })
 export class IdeasComponent implements OnInit {
   loadedIdeas: Idea[] = [];
+  isFetching = false;
   ideaForm: FormGroup;
   isSubmitted: boolean = false;
   forbiddenIdeaNames: any = ['skydive', 'bungee jump', 'crowdsurf'];
@@ -88,6 +89,7 @@ export class IdeasComponent implements OnInit {
   }
 
   private fetchIdeas() {
+    this.isFetching = true;
     this.http
       .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json')
       .pipe(
@@ -103,6 +105,7 @@ export class IdeasComponent implements OnInit {
       )
       .subscribe(
         (ideas) => {
+          this.isFetching = false;
           this.loadedIdeas = ideas;
         }
       );

@@ -82,8 +82,9 @@
     <hr>
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h3>Ideas</h3>
-        <p *ngIf="loadedIdeas.length < 1">No ideas found!</p>
-        <table *ngIf="loadedIdeas.length >= 1" class="table table-striped">
+        <p *ngIf="isFetching">Loading...</p>
+        <p *ngIf="loadedIdeas.length < 1 && !isFetching">No ideas found!</p>
+        <table *ngIf="loadedIdeas.length >= 1 && !isFetching" class="table table-striped">
             <thead>
                 <tr>
                     <th>Idea</th>
