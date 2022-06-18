@@ -35,6 +35,7 @@ import { IdeasComponent } from './components/ideas/ideas.component';
 import { RecipeService } from './components/recipes/recipe.service';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { IdeaService } from './components/ideas/idea.service';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { SortPipe } from './pipes/sort.pipe';
     CounterService,
     RecipeService,
     ShoppingListService,
+    IdeaService,
     AuthService,
     AuthGuard
   ],

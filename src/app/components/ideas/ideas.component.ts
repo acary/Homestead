@@ -4,6 +4,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 
 import { Idea } from './idea.model';
+import { IdeaService } from './idea.service';
 
 @Component({
   selector: 'app-ideas',
@@ -23,7 +24,10 @@ export class IdeasComponent implements OnInit {
     'tags': []
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private ideaService: IdeaService
+  ) { }
 
   ngOnInit(): void {
     this.ideaForm = new FormGroup({
@@ -49,12 +53,7 @@ export class IdeasComponent implements OnInit {
       'tags': this.ideaForm.get('ideaData.tags').value
     };
 
-    this.http.post<{ name: string }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json', this.submittedIdea)
-      .subscribe(
-        (response) => {
-          console.log(response);
-        }
-      );
+    this.ideaService.addIdea(this.submittedIdea);
 
     this.ideaForm.reset();
   }
@@ -90,25 +89,12 @@ export class IdeasComponent implements OnInit {
 
   private fetchIdeas() {
     this.isFetching = true;
-    this.http
-      .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json')
-      .pipe(
-        map(response => {
-          const ideasArray: Idea[] = [];
-          for (const key in response) {
-            if (response.hasOwnProperty(key)) {
-              ideasArray.push({ ...response[key], id: key });
-            }
-          }
-          return ideasArray;
-        })
-      )
-      .subscribe(
-        (ideas) => {
-          this.isFetching = false;
-          this.loadedIdeas = ideas;
-        }
-      );
+    this.ideaService.getIdeas().subscribe(
+      (ideas: Idea[]) => {
+        this.isFetching = false;
+        this.loadedIdeas = ideas;
+      }
+    );
   }
 
 }
