@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Subject, catchError, throwError } from "rxjs";
+import { map, Subject, catchError, throwError, tap } from "rxjs";
 import { Idea } from "./idea.model";
 
 @Injectable({ providedIn: 'root' })
@@ -11,10 +11,14 @@ export class IdeaService {
 
     addIdea({ ideaName, notes, priority, tags }: Idea) {
         const ideaData: Idea = { ideaName: ideaName, notes: notes, priority: priority, tags: tags };
-        this.http.post<{ name: string }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json', ideaData)
+        this.http.post<{ name: string }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json',
+            ideaData,
+            {
+                observe: 'response'
+            })
             .subscribe(
                 (response) => {
-                    console.log(response);
+                    console.log(response.status + ': ' + response.statusText);
                 },
                 (error) => {
                     this.error.next(error.message);
@@ -52,6 +56,20 @@ export class IdeaService {
 
     deleteIdeas() {
         return this.http
-            .delete('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json');
+            .delete('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json',
+                {
+                    observe: 'events'
+                }
+            ).pipe(tap(event => {
+                // console.log(event);
+                if (event.type === HttpEventType.Sent) {
+                    console.log('Request sent!');
+
+                }
+                if (event.type == HttpEventType.Response) {
+                    console.log(event.status + ': ' + event.statusText);
+                }
+            })
+            );
     }
 }

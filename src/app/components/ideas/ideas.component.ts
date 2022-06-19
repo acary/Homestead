@@ -60,7 +60,7 @@ export class IdeasComponent implements OnInit {
     };
 
     this.ideaService.addIdea(this.submittedIdea);
-
+    this.fetchIdeas();
     this.ideaForm.reset();
   }
 
