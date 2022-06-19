@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Subject } from "rxjs";
+import { map, Subject, catchError, throwError } from "rxjs";
 import { Idea } from "./idea.model";
 
 @Injectable({ providedIn: 'root' })
@@ -34,6 +34,10 @@ export class IdeaService {
                         }
                     }
                     return ideasArray;
+                }),
+                catchError(errorRes => {
+                    // Send to analytics server
+                    return throwError(errorRes);
                 })
             );
     }

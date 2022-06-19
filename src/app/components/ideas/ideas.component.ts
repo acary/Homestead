@@ -117,6 +117,10 @@ export class IdeasComponent implements OnInit {
     );
   }
 
+  onHandleError() {
+    this.error = null;
+  }
+
   ngOnDestroy() {
     this.errorSub.unsubscribe();
   }
