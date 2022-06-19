@@ -34,7 +34,8 @@ export class IdeaService {
             .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json',
                 {
                     headers: new HttpHeaders({ 'Custom-Header': 'Angular Rocks!' }),
-                    params: searchParams
+                    params: searchParams,
+                    responseType: 'json'
                 }
             )
             .pipe(
@@ -58,7 +59,8 @@ export class IdeaService {
         return this.http
             .delete('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json',
                 {
-                    observe: 'events'
+                    observe: 'events',
+                    responseType: 'json'
                 }
             ).pipe(tap(event => {
                 // console.log(event);
