@@ -1,10 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, Subject } from "rxjs";
 import { Idea } from "./idea.model";
 
 @Injectable({ providedIn: 'root' })
 export class IdeaService {
+    error = new Subject<string>();
+
     constructor(private http: HttpClient) { }
 
     addIdea({ ideaName, notes, priority, tags }: Idea) {
@@ -13,6 +15,9 @@ export class IdeaService {
             .subscribe(
                 (response) => {
                     console.log(response);
+                },
+                (error) => {
+                    this.error.next(error.message);
                 }
             );
     }

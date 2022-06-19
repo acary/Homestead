@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 
 import { Idea } from './idea.model';
 import { IdeaService } from './idea.service';
@@ -24,6 +24,7 @@ export class IdeasComponent implements OnInit {
     'tags': []
   };
   error = null;
+  private errorSub: Subscription;
 
   constructor(
     private http: HttpClient,
@@ -31,6 +32,10 @@ export class IdeasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.errorSub = this.ideaService.error.subscribe(errorMessage => {
+      this.error = errorMessage;
+    });
+
     this.ideaForm = new FormGroup({
       'ideaData': new FormGroup({
         'ideaName': new FormControl(null, [Validators.required, this.forbiddenIdeas.bind(this)]),
@@ -110,5 +115,9 @@ export class IdeasComponent implements OnInit {
         this.error = error.message;
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.errorSub.unsubscribe();
   }
 }
