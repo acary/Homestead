@@ -32,4 +32,9 @@ export class IdeaService {
                 })
             );
     }
+
+    deleteIdeas() {
+        return this.http
+            .delete('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json');
+    }
 }

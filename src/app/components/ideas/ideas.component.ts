@@ -44,7 +44,7 @@ export class IdeasComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
-    console.log(this.ideaForm.value);
+    // console.log(this.ideaForm.value);
 
     this.submittedIdea = {
       'ideaName': this.ideaForm.get('ideaData.ideaName').value,
@@ -97,4 +97,11 @@ export class IdeasComponent implements OnInit {
     );
   }
 
+  private clearIdeas() {
+    this.ideaService.deleteIdeas().subscribe(
+      () => {
+        this.loadedIdeas = [];
+      }
+    );
+  }
 }
