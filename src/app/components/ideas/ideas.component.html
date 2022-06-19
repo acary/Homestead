@@ -7,31 +7,28 @@
                 <div class="form-group my-1">
                     <label for="ideaName">Idea Name</label>
                     <input type="text" class="form-control" id="ideaName" formControlName="ideaName">
-                    <span
-                        *ngIf="ideaForm.get('ideaData.ideaName').hasError('ideaIsForbidden')
+                    <span *ngIf="ideaForm.get('ideaData.ideaName').hasError('ideaIsForbidden')
                         && ideaForm.get('ideaData.ideaName').touched">
                         <small class="text-danger">This idea is forbidden. </small>
                     </span>
-                    <span
-                        *ngIf="ideaForm.get('ideaData.ideaName').hasError('required')
+                    <span *ngIf="ideaForm.get('ideaData.ideaName').hasError('required')
                         && ideaForm.get('ideaData.ideaName').touched">
                         <small class="text-danger">Idea name is required. </small>
                     </span>
                     <span *ngIf="!ideaForm.get('ideaData.ideaName').valid 
-                        && ideaForm.get('ideaData.ideaName').touched"
-                        class="help-block"><small>Please enter a valid idea name!</small></span>
+                        && ideaForm.get('ideaData.ideaName').touched" class="help-block"><small>Please enter a valid
+                            idea name!</small></span>
                 </div>
                 <div class="form-group my-1">
                     <label for="notes">Notes</label>
                     <input type="text" class="form-control" id="notes" formControlName="notes">
-                    <span
-                        *ngIf="ideaForm.get('ideaData.notes').hasError('notesIsForbidden')
+                    <span *ngIf="ideaForm.get('ideaData.notes').hasError('notesIsForbidden')
                         && ideaForm.get('ideaData.notes').touched">
                         <small class="text-danger">This note is forbidden. </small>
                     </span>
                     <span *ngIf="!ideaForm.get('ideaData.notes').valid 
-                        && ideaForm.get('ideaData.notes').touched"
-                        class="help-block"><small>Please enter valid notes!</small></span>
+                        && ideaForm.get('ideaData.notes').touched" class="help-block"><small>Please enter valid
+                            notes!</small></span>
                 </div>
                 <div class="form-group my-1">
                     <label for="priority">
@@ -76,10 +73,16 @@
                 </tr>
             </tbody>
         </table>
+        <hr>
     </div>
 </div>
 <div class="row" *ngIf="loadedIdeas">
-    <hr>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <div class="alert alert-danger" *ngIf="error">
+            <h6>An error occurred</h6>
+            {{ error }}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h3>Ideas</h3>
         <p *ngIf="isFetching">Loading...</p>
@@ -107,7 +110,8 @@
     <div class="row mt-3">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
             <h4>Danger Zone!</h4>
-            <button (click)="clearIdeas()" class="btn btn-danger btn-sm my-2">Delete All Ideas</button>
+            <button (click)="clearIdeas()" class="btn btn-danger btn-sm my-2"
+                [disabled]="loadedIdeas.length == 0">Delete All Ideas</button>
         </div>
     </div>
 </div>

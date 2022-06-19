@@ -23,6 +23,7 @@ export class IdeasComponent implements OnInit {
     'priority': '',
     'tags': []
   };
+  error = null;
 
   constructor(
     private http: HttpClient,
@@ -93,6 +94,9 @@ export class IdeasComponent implements OnInit {
       (ideas: Idea[]) => {
         this.isFetching = false;
         this.loadedIdeas = ideas;
+      }, error => {
+        this.isFetching = false;
+        this.error = error.message;
       }
     );
   }
@@ -101,6 +105,9 @@ export class IdeasComponent implements OnInit {
     this.ideaService.deleteIdeas().subscribe(
       () => {
         this.loadedIdeas = [];
+      }, error => {
+        this.isFetching = false;
+        this.error = error.message;
       }
     );
   }
