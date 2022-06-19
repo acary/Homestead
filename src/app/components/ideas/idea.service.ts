@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Subject, catchError, throwError } from "rxjs";
 import { Idea } from "./idea.model";
@@ -24,7 +24,11 @@ export class IdeaService {
 
     getIdeas() {
         return this.http
-            .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json')
+            .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json',
+                {
+                    headers: new HttpHeaders({ 'Custom-Header': 'Angular Rocks!' })
+                }
+            )
             .pipe(
                 map(response => {
                     const ideasArray: Idea[] = [];
