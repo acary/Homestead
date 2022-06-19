@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,6 +36,8 @@ import { RecipeService } from './components/recipes/recipe.service';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { IdeaService } from './components/ideas/idea.service';
+import { AuthInterceptorService } from './components/users/auth-interceptor.service';
+import { LoggingInterceptorService } from './services/logging-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { IdeaService } from './components/ideas/idea.service';
     HttpClientModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true },
     UsersService,
     CounterService,
     RecipeService,

@@ -65,8 +65,7 @@ export class IdeaService {
             ).pipe(tap(event => {
                 // console.log(event);
                 if (event.type === HttpEventType.Sent) {
-                    console.log('Request sent!');
-
+                    // console.log('Request sent!');
                 }
                 if (event.type == HttpEventType.Response) {
                     console.log(event.status + ': ' + event.statusText);
