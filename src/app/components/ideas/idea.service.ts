@@ -23,11 +23,14 @@ export class IdeaService {
     }
 
     getIdeas() {
+        let searchParams = new HttpParams();
+        searchParams = searchParams.append('print', 'pretty');
+
         return this.http
             .get<{ [key: string]: Idea }>('https://homestead-ng-default-rtdb.firebaseio.com/ideas.json',
                 {
                     headers: new HttpHeaders({ 'Custom-Header': 'Angular Rocks!' }),
-                    params: new HttpParams().set('print', 'pretty')
+                    params: searchParams
                 }
             )
             .pipe(
