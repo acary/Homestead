@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Recipe } from "../components/recipes/recipe.model";
 import { RecipeService } from "../components/recipes/recipe.service";
 
 @Injectable({ providedIn: 'root' })
@@ -16,5 +17,15 @@ export class DataStorageService {
                 console.log(response);
             }
         );
+    }
+
+    fetchRecipes() {
+        this.http
+            .get<Recipe[]>('https://homestead-ng-default-rtdb.firebaseio.com/recipes.json')
+            .subscribe(
+                recipes => {
+                    this.recipeService.setRecipes(recipes);
+                }
+            );
     }
 }

@@ -11,7 +11,7 @@
         </ul>
         <div style="margin-right: 1px;">
           <button class="btn btn-success btn-sm" (click)="onSaveData()">Save</button>
-          <button class="btn btn-primary btn-sm mx-1">Fetch</button>
+          <button class="btn btn-primary btn-sm mx-1" (click)="onFetchRecipes()">Fetch</button>
         </div>
         <div style="margin-right: 5px;">
           <button class="btn btn-secondary btn-sm" (click)="onLogin()" *ngIf="!this.authenticated">Login</button>
