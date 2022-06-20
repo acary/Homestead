@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
       { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService] },
-      { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] },
+      { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] }
     ]
   },
   { path: 'shopping', component: ShoppingListComponent },
