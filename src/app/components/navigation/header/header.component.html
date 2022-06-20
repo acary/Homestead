@@ -9,8 +9,14 @@
         <ul class="navbar-nav mr-auto">
           <li *ngIf="this.authenticated" routerLinkActive="active" class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
         </ul>
-        <button class="btn btn-success btn-sm" (click)="onLogin()" *ngIf="!this.authenticated">Login</button>
-        <button class="btn btn-primary btn-sm mx-1" (click)="onLogout()" *ngIf="this.authenticated">Logout</button>
+        <div style="margin-right: 1px;">
+          <button class="btn btn-success btn-sm" (click)="onSaveData()">Save</button>
+          <button class="btn btn-primary btn-sm mx-1">Fetch</button>
+        </div>
+        <div style="margin-right: 5px;">
+          <button class="btn btn-secondary btn-sm" (click)="onLogin()" *ngIf="!this.authenticated">Login</button>
+          <button class="btn btn-secondary btn-sm mx-1" (click)="onLogout()" *ngIf="this.authenticated">Logout</button>
+        </div>
       </div>
   </nav>
 </header>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/components/users/auth.service';
+import { DataStorageService } from 'src/app/services/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +13,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private dataStorageService: DataStorageService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +34,11 @@ export class HeaderComponent implements OnInit {
     console.log('logout');
     this.authService.logout();
     this.authenticated = false;
+  }
+
+  onSaveData() {
+    console.log('Save data:');
+    this.dataStorageService.storeRecipes();
   }
 
 }
