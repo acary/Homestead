@@ -6,30 +6,34 @@ export class RecipeService {
     recipeSelected = new Subject<Recipe>();
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            'Craft Burger', 
-            'Delicious Summer Hamburger', 
-            'assets/images/burger.jpeg',
-            [
-                new Ingredient('Beef', 1),
-                new Ingredient('Cheese', 1),
-                new Ingredient('Lettuce', 1),
-                new Ingredient('Pickles', 1),
-                new Ingredient('Onion', 1),
-                new Ingredient('Bun', 2)
-            ]
-            ),
-        new Recipe(
-            'Baked Beans', 
-            'Homestyle Beans', 
-            'assets/images/beans.jpeg',
-            [
-                new Ingredient('Beans', 1),
-                new Ingredient('Onion', 1)
-            ]
-            ),
-    ];
+    private recipes: Recipe[] = [];
+
+    // private recipes: Recipe[] = [
+    //     new Recipe(
+    //         0,
+    //         'Craft Burger', 
+    //         'Delicious Summer Hamburger', 
+    //         'assets/images/burger.jpeg',
+    //         [
+    //             new Ingredient('Beef', 1),
+    //             new Ingredient('Cheese', 1),
+    //             new Ingredient('Lettuce', 1),
+    //             new Ingredient('Pickles', 1),
+    //             new Ingredient('Onion', 1),
+    //             new Ingredient('Bun', 2)
+    //         ]
+    //         ),
+    //     new Recipe(
+    //         1,
+    //         'Baked Beans', 
+    //         'Homestyle Beans', 
+    //         'assets/images/beans.jpeg',
+    //         [
+    //             new Ingredient('Beans', 1),
+    //             new Ingredient('Onion', 1)
+    //         ]
+    //         ),
+    // ];
 
     setRecipes(recipes: Recipe[]) {
         this.recipes = recipes;
@@ -41,7 +45,12 @@ export class RecipeService {
     }
 
     getRecipe(id: number) {
-        return this.recipes.slice()[id];
+        for (let recipe of this.recipes) {
+            if (recipe.id === id) {
+                return recipe;
+            }
+        }
+        return null;
     }
 
     publishRecipes() {
