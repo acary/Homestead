@@ -25,7 +25,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin() {
-    console.log('login');
+    // console.log('login');
+    this.router.navigate(['/auth']);
     this.authService.login();
     this.authenticated = true;
   }
