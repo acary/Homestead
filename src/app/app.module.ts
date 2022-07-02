@@ -38,6 +38,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { CounterService } from './services/counter.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
     IdeasComponent,
     FilterPipe,
     SortPipe,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
