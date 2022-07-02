@@ -2,20 +2,20 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a (click)="goHome()" class="navbar-brand brand" style="cursor: pointer;">Homestead</a>
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul *ngIf="this.isAuthenticated" class="navbar-nav me-auto mb-2 mb-md-0">
           <li routerLinkActive="active" class="nav-item"><a routerLink="/recipes" class="nav-link">Recipes</a></li>
           <li routerLinkActive="active" class="nav-item"><a routerLink="/shopping" class="nav-link">Shopping List</a></li>
         </ul>
-        <ul class="navbar-nav mr-auto">
-          <li *ngIf="this.authenticated" routerLinkActive="active" class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
-        </ul>
-        <div style="margin-right: 1px;">
+        <!-- <ul class="navbar-nav mr-auto">
+          <li *ngIf="this.isAuthenticated" routerLinkActive="active" class="nav-item"><a [routerLink]="['/users']" class="nav-link">Users</a></li>
+        </ul> -->
+        <div *ngIf="this.isAuthenticated" style="margin-right: 1px;">
           <button class="btn btn-success btn-sm" (click)="onSaveData()">Save</button>
           <button class="btn btn-primary btn-sm mx-1" (click)="onFetchData()">Fetch</button>
         </div>
         <div style="margin-right: 5px;">
-          <button class="btn btn-secondary btn-sm" (click)="onLogin()" *ngIf="!this.authenticated">Login</button>
-          <button class="btn btn-secondary btn-sm mx-1" (click)="onLogout()" *ngIf="this.authenticated">Logout</button>
+          <a routerLink="/auth"><button class="btn btn-secondary btn-sm" *ngIf="!this.isAuthenticated">Login</button></a>
+          <button class="btn btn-secondary btn-sm mx-1" *ngIf="this.isAuthenticated">Logout</button>
         </div>
       </div>
   </nav>

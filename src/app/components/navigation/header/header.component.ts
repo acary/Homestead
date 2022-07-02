@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/components/users/auth.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/components/auth/auth.service';
 import { DataStorageService } from 'src/app/services/data-storage.service';
 
 @Component({
@@ -8,8 +10,9 @@ import { DataStorageService } from 'src/app/services/data-storage.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  authenticated = false;
+export class HeaderComponent implements OnInit, OnDestroy {
+  private userSub: Subscription;
+  isAuthenticated = false;
 
   constructor(
     private router: Router,
@@ -18,23 +21,17 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
   goHome() {
     this.router.navigate(['/']);
-  }
-
-  onLogin() {
-    // console.log('login');
-    this.router.navigate(['/auth']);
-    this.authService.login();
-    this.authenticated = true;
-  }
-
-  onLogout() {
-    console.log('logout');
-    this.authService.logout();
-    this.authenticated = false;
   }
 
   onSaveData() {
