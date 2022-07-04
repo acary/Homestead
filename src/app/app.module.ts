@@ -40,6 +40,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AlertComponent } from './shared/alert/alert.component';
     SortPipe,
     AuthComponent,
     LoadingSpinnerComponent,
-    AlertComponent
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     CommonModule,
@@ -89,6 +91,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     AuthService,
     AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // entryComponents: [AlertComponent]
 })
 export class AppModule { }
