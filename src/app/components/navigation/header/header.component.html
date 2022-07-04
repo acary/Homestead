@@ -15,7 +15,7 @@
         </div>
         <div style="margin-right: 5px;">
           <a routerLink="/auth"><button class="btn btn-secondary btn-sm" *ngIf="!this.isAuthenticated">Login</button></a>
-          <button class="btn btn-secondary btn-sm mx-1" *ngIf="this.isAuthenticated">Logout</button>
+          <button (click)="onLogout()" class="btn btn-secondary btn-sm mx-1" *ngIf="this.isAuthenticated">Logout</button>
         </div>
       </div>
   </nav>
