@@ -10,7 +10,7 @@ import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-s
 import { RecipesResolverService } from './components/recipes/recipes-resolver.service';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
-import { AuthGuard } from './components/users/auth-guard.service';
+import { AuthGuard } from './components/auth/auth.guard';
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
 import { UsersComponent } from './components/users/users.component';
 
@@ -19,7 +19,10 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'home', component: HomeComponent },
   {
-    path: 'recipes', component: RecipesComponent, children: [
+    path: 'recipes', 
+    component: RecipesComponent, 
+    canActivate: [AuthGuard],
+    children: [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
       { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService] },
