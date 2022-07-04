@@ -26,7 +26,7 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { ShoppingListService } from './components/shopping-list/shopping-list.service';
 import { ActiveUsersComponent } from './components/users/active-users/active-users.component';
 import { AuthGuard } from './components/users/auth-guard.service';
-import { AuthInterceptorService } from './components/users/auth-interceptor.service';
+import { AuthInterceptorService } from './components/auth/auth-interceptor.service';
 import { AuthService } from './components/users/auth.service';
 import { InactiveUsersComponent } from './components/users/inactive-users/inactive-users.component';
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
