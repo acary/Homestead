@@ -39,6 +39,7 @@ import { CounterService } from './services/counter.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     FilterPipe,
     SortPipe,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,

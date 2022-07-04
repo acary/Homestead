@@ -1,8 +1,9 @@
 <br><br><br>
 <div class="container">
-    <div class="row alert alert-danger" *ngIf="this.error">
+    <!-- <div class="row alert alert-danger" *ngIf="this.error">
         <p>{{ error }}</p>
-    </div>
+    </div> -->
+    <app-alert [message]="error" *ngIf="this.error"></app-alert>
     <div class="row" *ngIf="this.isLoading" style="text-align: center;">
         <app-loading-spinner></app-loading-spinner>
     </div>
@@ -12,12 +13,13 @@
             <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="me@email.com" ngModel required
-                        email>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="me@email.com" ngModel
+                        required email>
                 </div>
                 <div class="form-group mt-2">
                     <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" ngModel required minlength="6">
+                    <input type="password" name="password" class="form-control" id="password" ngModel required
+                        minlength="6">
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary m-1" [disabled]="!authForm.valid">{{ isLoginMode ?
