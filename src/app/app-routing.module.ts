@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './components/auth/auth.component';
-import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './components/auth/auth.guard';
 import { IdeasComponent } from './components/ideas/ideas.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
@@ -9,18 +9,15 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipesResolverService } from './components/recipes/recipes-resolver.service';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
-import { AuthGuard } from './components/auth/auth.guard';
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
-  { path: 'home', component: HomeComponent },
   {
-    path: 'recipes', 
-    component: RecipesComponent, 
+    path: 'recipes',
+    component: RecipesComponent,
     canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipeStartComponent },
@@ -29,7 +26,13 @@ const routes: Routes = [
       { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] }
     ]
   },
-  { path: 'shopping', component: ShoppingListComponent },
+  {
+    path: "shopping",
+    loadChildren: () =>
+      import("./components/shopping-list/shopping-list.module").then(
+        m => m.ShoppingListModule
+      )
+  },
   {
     path: 'users',
     canActivateChild: [AuthGuard],

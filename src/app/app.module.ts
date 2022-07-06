@@ -6,8 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthInterceptorService } from './components/auth/auth-interceptor.service';
 import { AuthComponent } from './components/auth/auth.component';
-import { HomeComponent } from './components/home/home.component';
 import { IdeaService } from './components/ideas/idea.service';
 import { IdeasComponent } from './components/ideas/ideas.component';
 import { MakeThisComponent } from './components/make-this/make-this.component';
@@ -21,12 +21,10 @@ import { RecipeListComponent } from './components/recipes/recipe-list/recipe-lis
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipeService } from './components/recipes/recipe.service';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { ShoppingEditComponent } from './components/shopping-edit/shopping-edit.component';
-import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
 import { ShoppingListService } from './components/shopping-list/shopping-list.service';
 import { ActiveUsersComponent } from './components/users/active-users/active-users.component';
 import { AuthGuard } from './components/users/auth-guard.service';
-import { AuthInterceptorService } from './components/auth/auth-interceptor.service';
 import { AuthService } from './components/users/auth.service';
 import { InactiveUsersComponent } from './components/users/inactive-users/inactive-users.component';
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
@@ -37,9 +35,9 @@ import { SortPipe } from './pipes/sort.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { CounterService } from './services/counter.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 @NgModule({
@@ -50,12 +48,9 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropdownDirective,
     MakeThisComponent,
     UsersComponent,
-    HomeComponent,
     TruncatePipe,
     ActiveUsersComponent,
     InactiveUsersComponent,
@@ -78,7 +73,8 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ShoppingListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
