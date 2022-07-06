@@ -10,17 +10,11 @@ import { AuthInterceptorService } from './components/auth/auth-interceptor.servi
 import { AuthComponent } from './components/auth/auth.component';
 import { IdeaService } from './components/ideas/idea.service';
 import { IdeasComponent } from './components/ideas/ideas.component';
-import { MakeThisComponent } from './components/make-this/make-this.component';
 import { FooterComponent } from './components/navigation/footer/footer.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
-import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
-import { RecipeItemComponent } from './components/recipes/recipe-item/recipe-item.component';
-import { RecipeListComponent } from './components/recipes/recipe-list/recipe-list.component';
-import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipeService } from './components/recipes/recipe.service';
-import { RecipesComponent } from './components/recipes/recipes.component';
+import { RecipesModule } from './components/recipes/recipes.module';
 import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
 import { ShoppingListService } from './components/shopping-list/shopping-list.service';
 import { ActiveUsersComponent } from './components/users/active-users/active-users.component';
@@ -30,13 +24,9 @@ import { InactiveUsersComponent } from './components/users/inactive-users/inacti
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
 import { UsersComponent } from './components/users/users.component';
 import { UsersService } from './components/users/users.service';
-import { FilterPipe } from './pipes/filter.pipe';
-import { SortPipe } from './pipes/sort.pipe';
-import { TruncatePipe } from './pipes/truncate.pipe';
 import { CounterService } from './services/counter.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
-import { DropdownDirective } from './shared/dropdown.directive';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
@@ -44,24 +34,13 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    DropdownDirective,
-    MakeThisComponent,
     UsersComponent,
-    TruncatePipe,
     ActiveUsersComponent,
     InactiveUsersComponent,
     NotFoundComponent,
-    RecipeStartComponent,
-    RecipeEditComponent,
     SubscriptionListComponent,
     FooterComponent,
     IdeasComponent,
-    FilterPipe,
-    SortPipe,
     AuthComponent,
     LoadingSpinnerComponent,
     AlertComponent,
@@ -74,6 +53,7 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    RecipesModule,
     ShoppingListModule
   ],
   providers: [
