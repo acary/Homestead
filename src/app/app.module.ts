@@ -6,18 +6,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
-import { ActiveUsersComponent } from './components/users/active-users/active-users.component';
-import { CoreModule } from './core.module';
 import { IdeasComponent } from './components/ideas/ideas.component';
-import { InactiveUsersComponent } from './components/users/inactive-users/inactive-users.component';
 import { FooterComponent } from './components/navigation/footer/footer.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RecipesModule } from './components/recipes/recipes.module';
 import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
+import { ActiveUsersComponent } from './components/users/active-users/active-users.component';
+import { InactiveUsersComponent } from './components/users/inactive-users/inactive-users.component';
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
-import { SharedModule } from './shared/shared.module';
 import { UsersComponent } from './components/users/users.component';
+import { CoreModule } from './modules/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
