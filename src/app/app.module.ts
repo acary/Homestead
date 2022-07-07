@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './components/auth/auth.component';
 import { IdeasComponent } from './components/ideas/ideas.component';
 import { FooterComponent } from './components/navigation/footer/footer.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
@@ -16,6 +15,7 @@ import { ActiveUsersComponent } from './components/users/active-users/active-use
 import { InactiveUsersComponent } from './components/users/inactive-users/inactive-users.component';
 import { SubscriptionListComponent } from './components/users/subscription-list/subscription-list.component';
 import { UsersComponent } from './components/users/users.component';
+import { AuthModule } from './modules/auth.module';
 import { CoreModule } from './modules/core.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -23,7 +23,6 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     ActiveUsersComponent,
-    AuthComponent,
     FooterComponent,
     HeaderComponent,
     InactiveUsersComponent,
@@ -34,6 +33,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     AppRoutingModule,
+    AuthModule,
     BrowserModule,
     CoreModule,
     FormsModule,

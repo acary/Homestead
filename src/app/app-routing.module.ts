@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './components/auth/auth.component';
+
 import { AuthGuard } from './components/auth/auth.guard';
 import { IdeasComponent } from './components/ideas/ideas.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -9,7 +9,10 @@ import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'auth', component: AuthComponent },
+  {
+    path: "auth",
+    loadChildren: () => import("./modules/auth.module").then(m => m.AuthModule)
+  },
   {
     path: "recipes",
     loadChildren: () =>
