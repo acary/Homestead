@@ -1,10 +1,11 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { FilterPipe } from "src/app/pipes/filter.pipe";
 import { SortPipe } from "src/app/pipes/sort.pipe";
 import { TruncatePipe } from "src/app/pipes/truncate.pipe";
 import { DropdownDirective } from "src/app/shared/dropdown.directive";
+import { SharedModule } from "src/app/shared/shared.module";
 import { MakeThisComponent } from "../make-this/make-this.component";
 import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
 import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
@@ -29,10 +30,10 @@ import { RecipesComponent } from "./recipes.component";
         TruncatePipe
     ],
     imports: [
-        CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RecipesRoutingModule
+        RecipesRoutingModule,
+        SharedModule
     ],
     exports: [
         RecipesComponent,

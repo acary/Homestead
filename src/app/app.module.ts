@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './components/auth/auth-interceptor.service';
@@ -26,48 +25,42 @@ import { UsersComponent } from './components/users/users.component';
 import { UsersService } from './components/users/users.service';
 import { CounterService } from './services/counter.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
-import { AlertComponent } from './shared/alert/alert.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    UsersComponent,
     ActiveUsersComponent,
+    AuthComponent,
+    FooterComponent,
+    HeaderComponent,
     InactiveUsersComponent,
+    IdeasComponent,
     NotFoundComponent,
     SubscriptionListComponent,
-    FooterComponent,
-    IdeasComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceholderDirective
+    UsersComponent
   ],
   imports: [
-    CommonModule,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
     HttpClientModule,
     RecipesModule,
-    ShoppingListModule
+    ReactiveFormsModule,
+    ShoppingListModule,
+    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true },
-    UsersService,
+    AuthGuard,
+    AuthService,
     CounterService,
+    IdeaService,
     RecipeService,
     ShoppingListService,
-    IdeaService,
-    AuthService,
-    AuthGuard
+    UsersService
   ],
-  bootstrap: [AppComponent],
-  // entryComponents: [AlertComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
