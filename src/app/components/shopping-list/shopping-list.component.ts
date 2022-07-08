@@ -1,6 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { ShoppingListService } from 'src/app/components/shopping-list/shopping-list.service';
+import { LoggingService } from 'src/app/services/logging.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
@@ -13,7 +15,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(
-    private shoppingListService: ShoppingListService
+    private shoppingListService: ShoppingListService,
+    private loggingService: LoggingService
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
         (ingredients: Ingredient[]) => {
           this.ingredients = ingredients;
         })
+    this.loggingService.printLog('Hello from ShoppingListComponent ngOnInit');
   }
 
   onEditItem(index: number) {
